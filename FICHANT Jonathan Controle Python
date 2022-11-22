@@ -1,0 +1,191 @@
+# PARTIE 1 TRI A BULLES
+
+myTable = [5,9,8,3,4]
+varTemp = 0
+
+#1 Permuter deux valeur d'un tableau à partir de leur indice
+
+print(myTable)
+
+varTemp = myTable[2]
+myTable [2] = myTable [3]
+myTable [3] = varTemp
+
+print(myTable)
+
+
+#2 Une itération du tri à bulles, un seul parcours du tableau
+myTable = [5,3,8,7,6]
+
+print(myTable)
+
+for n in range (1,len(myTable)) : # On parcours toute la liste
+    if myTable[n-1] > myTable [n] :
+        varTemp = myTable[n-1]
+        myTable [n-1] = myTable [n]
+        myTable [n] = varTemp
+
+print(myTable)
+
+
+#3 Tri à bulles complet
+myTable = [10,9,8,7,6]
+
+print(myTable)
+
+for i in range (1,len(myTable)): # On répète le code autant de fois que la longueur de la liste (utile si c'est le pire cas)
+    for n in range (1,len(myTable)) : # On parcours toute la liste
+        if myTable[n-1] > myTable [n] :
+            varTemp = myTable[n-1]
+            myTable [n-1] = myTable [n]
+            myTable [n] = varTemp
+
+print(myTable)
+
+#4 
+# Le tri à bulles peut être considéré comme très lent car il reparcourt la liste autant de fois que la longueur de la liste
+#  et donc repasse inutilement plusieurs fois sur des éléments déjà triés.
+# L'ordre de grandeur de son exécution est équivalente à la longueur de sa liste au carré, noté O(n²).
+
+
+# PARTIE 2 TIC TAC TOE
+
+lignehor = "------------"
+case1 = " "
+case2 = " "
+case3 = " "
+case4 = " "
+case5 = " "
+case6 = " "
+case7 = " "
+case8 = " "
+case9 = " "
+turn = "X" #X joue en premier par convention
+nombreCase = 0
+nombreTurn = 1
+
+print("Coordonnées de la grille :")
+print("1 | 2 | 3")
+print(lignehor)
+print("4 | 5 | 6")
+print(lignehor)
+print("7 | 8 | 9")
+print(" ")
+
+#1 Affichage de la grille par attribution d'une variable état pour chacune des 9 cases
+print(case1,"|",case2,"|",case3)
+print(lignehor)
+print(case4,"|",case5,"|",case6)
+print(lignehor)
+print(case7,"|",case8,"|",case9)
+
+#2 Fonctionnalité pour jouer un O ou un X
+
+while(True) :
+    print("Tour de ", turn)
+    nombreCase = input("Entrez le numéro de la case voulue : ")
+
+#Vérification si la case est libre, si oui on y place le symbole du joueur du tour d
+    if nombreCase == '1' :
+        if case1 == " " :
+            case1 = turn
+        else :
+            nombreTurn -= 1
+    if nombreCase == '2' :
+        if case2 == " " :
+            case2 = turn
+        else :
+            nombreTurn -= 1
+    if nombreCase == '3' :
+        if case3 == " " :
+            case3 = turn
+        else :
+            nombreTurn -= 1
+    if nombreCase == '4' :
+        if case4 == " " :
+            case4 = turn
+        else :
+            nombreTurn -= 1
+    if nombreCase == '5' :
+        if case5 == " " :
+            case5 = turn
+        else :
+            nombreTurn -= 1
+    if nombreCase == '6' :
+        if case6 == " " :
+            case6 = turn
+        else :
+            nombreTurn -= 1
+    if nombreCase == '7' :
+        if case7 == " " :
+            case7 = turn
+        else :
+            nombreTurn -= 1
+    if nombreCase == '8' :
+        if case8 == " " :
+            case8 = turn
+        else :
+            nombreTurn -= 1
+    if nombreCase == '9' :
+        if case9 == " " :
+            case9 = turn
+        else :
+            nombreTurn -= 1
+
+    print(case1,"|",case2,"|",case3)
+    print(lignehor)
+    print(case4,"|",case5,"|",case6)
+    print(lignehor)
+    print(case7,"|",case8,"|",case9)
+    
+    nombreTurn += 1
+    print(case1 + case2 + case3)
+
+#3 Conditions de victoire
+    if case1 + case2 + case3 == 'XXX' or case1 + case2 + case3 == 'OOO' or case1 + case4 + case7 == 'XXX' or  case1 + case4 + case7 == 'OOO' or case4 + case5 + case6 == 'XXX' or case4 + case5 + case6 == 'OOO' or  case7+ case8 + case9 == 'XXX' or  case7+ case8 + case9 == 'OOO' or  case2+ case5 + case8 == 'XXX' or  case2+ case5 + case8 == 'OOO' or  case3+ case6 + case9 == 'XXX' or  case3+ case6 + case9 == 'OOO' or  case1+ case5 + case9 == 'XXX'or  case1+ case5 + case9 == 'OOO' or  case3+ case5 + case7 == 'XXX'or case3+ case5 + case7 == 'OOO':
+        print("VICTOIRE")
+        #remise à zéro du jeu
+        print("Remise à zéro de la grille")
+        case1 = " "
+        case2 = " "
+        case3 = " "
+        case4 = " "
+        case5 = " "
+        case6 = " "
+        case7 = " "
+        case8 = " "
+        case9 = " "
+        turn = "X" #X joue en premier par convention
+        nombreCase = 0
+        nombreTurn = 1
+
+    #Changement de joueur
+    if nombreTurn % 2 == 0 :
+        turn = "O"
+    else :
+        turn = "X" 
+
+#4 vérifier si la grille est complète
+
+    if nombreTurn >= 10 :
+        print("Égalité !")
+        print("Remise à zéro de la grille")
+        case1 = " "
+        case2 = " "
+        case3 = " "
+        case4 = " "
+        case5 = " "
+        case6 = " "
+        case7 = " "
+        case8 = " "
+        case9 = " "
+        turn = "X" #X joue en premier par convention
+        nombreCase = 0
+        nombreTurn = 1
+
+
+#6 Pour un jeu de puissance 4, il faudrait cette fois ci que le joueur entre la colonne qu'il souhaite jouer
+# puis on vérifie si la colonne n'est pas remplie, si c'est le cas on cherche la position la plus basse et on
+# intrègre le symbole du joueur du tour à celle-ci. Par contre la méthode de toutes les conditions de victoires
+# n'est plus possible vu le nombre de case. Il faut alors trouver un autre moyen, par exemple en partant du dernier
+# pion joué on analyse les pions du même joueur puis leur voisin pour vérifier une possible ligne.
